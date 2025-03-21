@@ -1,0 +1,496 @@
+html {
+  font-size: 20px;
+}
+
+$border: 4px;
+
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  user-select: none;
+  cursor: default;
+
+  .desktop-background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #F5B83D;
+
+    .desktop-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      top: 30px;
+      left: 40px;
+
+      .icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .icon-svg {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100px;
+          height: 100px;
+          
+          svg {
+            overflow: visible;
+            filter: drop-shadow(5px 5px 0 #000);
+
+            .path-fill {
+              stroke: white;
+              stroke-width: 6px;
+              stroke-linejoin: round;
+            }
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .icon-svg {
+
+            svg {
+              filter: drop-shadow(5px 5px 0 #F5533D);
+
+              path {
+
+                &:last-child {
+                  fill: #F5533D;
+                }
+              }
+            }
+          }
+
+          .icon-title {
+            color: #F5533D;
+          }
+        }
+
+        .icon-title {
+          font: 1rem "bitbit";
+        }
+      }
+    }
+
+    .window {
+      display: none;
+      // display: flex;
+      background-color: #FFF;
+      position: absolute;
+      border: $border solid #000;
+      border-radius: 15px;
+      overflow: hidden;
+      flex-direction: column;
+      width: 1400px;
+      height: 800px;
+
+      $headerHeight: 40px;
+
+      .window-header {
+        width: 100%;
+        height: $headerHeight;
+        border-bottom: $border solid #000;
+        display: flex;
+        justify-content: space-between;
+
+        .header-tab {
+          width: 20%;
+          height: 100%;
+          border-left: $border solid #000;
+          border-right: $border solid #000;
+          margin-left: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 10px;
+
+          .tab-title {
+            font: 1em "bitbit";
+          }
+
+          .tab-close {
+            width: 20px;
+            aspect-ratio: 1 / 1;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              background-color: #EEE;
+            }
+
+            img {
+              width: 50%;
+            }
+          }
+        }
+
+        .header-buttons {
+          display: flex;
+          
+          .header-button {
+            width: 40px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              background-color: #EEE;
+            }
+
+            &.restore {
+              display: none;
+            }
+
+            &.close {
+
+              &:hover {
+                background-color: #F5533D;
+              }
+            }
+
+            img {
+              width: 16px;
+            }
+          }
+        }
+      }
+
+      .window-body {
+        width: 100%;
+        height: calc(100% - $headerHeight);
+        display: flex;
+
+        $scrollWidth: 30px;
+
+        .window-display {
+          overflow-x: hidden;
+          overflow-y: scroll;
+          width: calc(100% - $scrollWidth);
+          height: 100%;
+          background: #FEF6E7;
+          display: flex;
+          flex-direction: column;
+  
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .window-content {
+            height: 100%;
+
+            &.profile {
+              display: flex;
+              flex-direction: column;
+
+              .content-profile {
+                font: 1rem "bitbit";
+                display: flex;
+                height: 100%;
+                flex-shrink: 0;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+          
+                .profile-propic {
+                  width: 450px;
+                  aspect-ratio: 1 / 1;
+                  overflow: hidden;
+                  border: 4px solid #000;
+                  box-shadow: 10px 10px 0 #000;
+                  background: #F5B83D;
+          
+                  img {
+                    width: 100%;
+                    visibility: hidden;
+                  }
+                }
+          
+                .profile-info {
+                  display: flex;
+                  flex-direction: column;
+          
+                  .info-name {
+                    font: 6.6rem "PartialSans";
+                  }
+          
+                  .info-contact {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 40px;
+                    margin-left: 15px;
+          
+                    .contact-item {
+                      display: flex;
+                      height: 22px;
+                      align-items: center;
+                      
+                      .icon {
+                        display: flex;
+                        width: 28px;
+                        height: 100%;
+                        padding-right: 10px;
+                        border-right: 2px solid #000;
+          
+                        img {
+                          width: 100%;
+                        }
+                      }
+          
+                      span {
+                        margin-left: 10px;
+                      }
+                    }
+                  }
+          
+                  .info-ability {
+                    display: flex;
+                    gap: 25px;
+          
+                    .ability {
+                      display: flex;
+                      flex-direction: column;
+                      gap: 10px;
+          
+                      &.left {
+          
+                        .program {
+          
+                          .name {
+                            width: 80px;
+                          }
+                        }
+                      }
+          
+                      &.right {
+          
+                        .program {
+          
+                          .name {
+                            width: 60px;
+                          }
+                        }
+                      }
+          
+                      .program {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+          
+                        .gauge {
+                          display: flex;
+                          gap: 3px;
+            
+                          span {
+                            width: 11px;
+                            height: 25px;
+                            border: 3px solid #000;
+                            background: #000;
+                          }
+            
+                          &.figma {
+                            span {
+                              &:nth-child(n+10) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.html {
+                            span {
+                              &:nth-child(n+10) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.css {
+                            span {
+                              &:nth-child(n+10) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.js {
+                            span {
+                              &:nth-child(n+9) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.ps {
+                            span {
+                              &:nth-child(n+10) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.ai {
+                            span {
+                              &:nth-child(n+9) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.pr {
+                            span {
+                              &:nth-child(n+8) {
+                                background: #fff;
+                              }
+                            }
+                          }
+            
+                          &.ae {
+                            span {
+                              &:nth-child(n+7) {
+                                background: #fff;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              .content-history {
+                display: flex;
+                height: 100%;
+                flex-shrink: 0;
+                flex-direction: column;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+          
+                .history-chat {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+          
+                  .chat-name {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+          
+                    img {
+                      width: 80px;
+                    }
+          
+                    span {
+                      font: 2rem "PartialSans";
+                    }
+                  }
+          
+                  .chat-script {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+          
+                    .text {
+                      grid-column: 1 / 2;
+                      grid-row: 1 / 2;
+                      font: 1rem "bitbit";
+                      display: flex;
+                      gap: 15px;
+                      align-items: center;
+                      justify-content: center;
+                      z-index: 1;
+          
+                      > div {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        margin-bottom: 20px;
+                      }
+                    }
+          
+                    .textbox {
+                      grid-column: 1 / 2;
+                      grid-row: 1 / 2;
+                      width: 750px;
+                      filter: drop-shadow(6px 6px 0 #000);
+                    }
+                  }
+          
+                  &.right {
+                    .chat-name {
+                      margin-left: auto;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .window-scroll {
+          width: $scrollWidth;
+          border-left: $border solid #000;
+          display: flex;
+          flex-direction: column;
+
+          .scroll-track {
+            width: 100%;
+            height: calc(100% - 2 * $scrollWidth);
+            padding: 2px;
+
+            .scroll-thumb {
+              width: 100%;
+              height: 50%;
+              $thumbBorder: $border - 1px;
+              border: $thumbBorder solid #000;
+              border-radius: 5px;
+              background: url("/profile/00_source/icon_handle.svg") center center no-repeat;
+              background-size: 80% auto;
+              background-color: #FFF;
+
+              &:hover {
+                background-color: #EEE;
+              }
+            }
+          }
+
+          .scroll-button {
+            width: 100%;
+            height: $scrollWidth;
+
+            &:first-child {
+              border-bottom: $border solid #000;
+              background: url("/profile/00_source/icon_arrow_up.svg") center center no-repeat;
+            }
+
+            &:last-child {
+              border-top: $border solid #000;
+              background: url("/profile/00_source/icon_arrow_down.svg") center center no-repeat;
+            }
+
+            &:hover {
+              background-color: #EEE;
+            }
+          }
+        }
+      }
+    }
+
+    .window-contents {
+      display: none;
+
+    }
+  }
+}

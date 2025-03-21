@@ -1,0 +1,361 @@
+html {
+  font-size: 20px;
+}
+
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: default;
+}
+.desktop .desktop-background {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #F5B83D;
+}
+.desktop .desktop-background .desktop-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 30px;
+  left: 40px;
+}
+.desktop .desktop-background .desktop-icons .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desktop .desktop-background .desktop-icons .icon .icon-svg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+.desktop .desktop-background .desktop-icons .icon .icon-svg svg {
+  overflow: visible;
+  filter: drop-shadow(5px 5px 0 #000);
+}
+.desktop .desktop-background .desktop-icons .icon .icon-svg svg .path-fill {
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.desktop .desktop-background .desktop-icons .icon:hover {
+  cursor: pointer;
+}
+.desktop .desktop-background .desktop-icons .icon:hover .icon-svg svg {
+  filter: drop-shadow(5px 5px 0 #F5533D);
+}
+.desktop .desktop-background .desktop-icons .icon:hover .icon-svg svg path:last-child {
+  fill: #F5533D;
+}
+.desktop .desktop-background .desktop-icons .icon:hover .icon-title {
+  color: #F5533D;
+}
+.desktop .desktop-background .desktop-icons .icon .icon-title {
+  font: 1rem "bitbit";
+}
+.desktop .desktop-background .window {
+  display: none;
+  background-color: #FFF;
+  position: absolute;
+  border: 4px solid #000;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-direction: column;
+  width: 1400px;
+  height: 800px;
+}
+.desktop .desktop-background .window .window-header {
+  width: 100%;
+  height: 40px;
+  border-bottom: 4px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+.desktop .desktop-background .window .window-header .header-tab {
+  width: 20%;
+  height: 100%;
+  border-left: 4px solid #000;
+  border-right: 4px solid #000;
+  margin-left: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.desktop .desktop-background .window .window-header .header-tab .tab-title {
+  font: 1em "bitbit";
+}
+.desktop .desktop-background .window .window-header .header-tab .tab-close {
+  width: 20px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desktop .desktop-background .window .window-header .header-tab .tab-close:hover {
+  background-color: #EEE;
+}
+.desktop .desktop-background .window .window-header .header-tab .tab-close img {
+  width: 50%;
+}
+.desktop .desktop-background .window .window-header .header-buttons {
+  display: flex;
+}
+.desktop .desktop-background .window .window-header .header-buttons .header-button {
+  width: 40px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desktop .desktop-background .window .window-header .header-buttons .header-button:hover {
+  background-color: #EEE;
+}
+.desktop .desktop-background .window .window-header .header-buttons .header-button.restore {
+  display: none;
+}
+.desktop .desktop-background .window .window-header .header-buttons .header-button.close:hover {
+  background-color: #F5533D;
+}
+.desktop .desktop-background .window .window-header .header-buttons .header-button img {
+  width: 16px;
+}
+.desktop .desktop-background .window .window-body {
+  width: 100%;
+  height: calc(100% - 40px);
+  display: flex;
+}
+.desktop .desktop-background .window .window-body .window-display {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: calc(100% - 30px);
+  height: 100%;
+  background: #FEF6E7;
+  display: flex;
+  flex-direction: column;
+}
+.desktop .desktop-background .window .window-body .window-display::-webkit-scrollbar {
+  display: none;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content {
+  height: 100%;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile {
+  display: flex;
+  flex-direction: column;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile {
+  font: 1rem "bitbit";
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-propic {
+  width: 450px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border: 4px solid #000;
+  box-shadow: 10px 10px 0 #000;
+  background: #F5B83D;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-propic img {
+  width: 100%;
+  visibility: hidden;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info {
+  display: flex;
+  flex-direction: column;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-name {
+  font: 6.6rem "PartialSans";
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  margin-left: 15px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-contact .contact-item {
+  display: flex;
+  height: 22px;
+  align-items: center;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-contact .contact-item .icon {
+  display: flex;
+  width: 28px;
+  height: 100%;
+  padding-right: 10px;
+  border-right: 2px solid #000;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-contact .contact-item .icon img {
+  width: 100%;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-contact .contact-item span {
+  margin-left: 10px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability {
+  display: flex;
+  gap: 25px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability.left .program .name {
+  width: 80px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability.right .program .name {
+  width: 60px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge {
+  display: flex;
+  gap: 3px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge span {
+  width: 11px;
+  height: 25px;
+  border: 3px solid #000;
+  background: #000;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.figma span:nth-child(n+10) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.html span:nth-child(n+10) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.css span:nth-child(n+10) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.js span:nth-child(n+9) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.ps span:nth-child(n+10) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.ai span:nth-child(n+9) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.pr span:nth-child(n+8) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info .info-ability .ability .program .gauge.ae span:nth-child(n+7) {
+  background: #fff;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-name img {
+  width: 80px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-name span {
+  font: 2rem "PartialSans";
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-script {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-script .text {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  font: 1rem "bitbit";
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-script .text > div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 20px;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-script .textbox {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 750px;
+  filter: drop-shadow(6px 6px 0 #000);
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat.right .chat-name {
+  margin-left: auto;
+}
+.desktop .desktop-background .window .window-body .window-scroll {
+  width: 30px;
+  border-left: 4px solid #000;
+  display: flex;
+  flex-direction: column;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-track {
+  width: 100%;
+  height: calc(100% - 60px);
+  padding: 2px;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-track .scroll-thumb {
+  width: 100%;
+  height: 50%;
+  border: 3px solid #000;
+  border-radius: 5px;
+  background: url("/profile/00_source/icon_handle.svg") center center no-repeat;
+  background-size: 80% auto;
+  background-color: #FFF;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-track .scroll-thumb:hover {
+  background-color: #EEE;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-button {
+  width: 100%;
+  height: 30px;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-button:first-child {
+  border-bottom: 4px solid #000;
+  background: url("/profile/00_source/icon_arrow_up.svg") center center no-repeat;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-button:last-child {
+  border-top: 4px solid #000;
+  background: url("/profile/00_source/icon_arrow_down.svg") center center no-repeat;
+}
+.desktop .desktop-background .window .window-body .window-scroll .scroll-button:hover {
+  background-color: #EEE;
+}
+.desktop .desktop-background .window-contents {
+  display: none;
+}/*# sourceMappingURL=common.css.map */
