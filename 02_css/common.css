@@ -334,7 +334,7 @@ html {
   height: 50%;
   border: 3px solid #000;
   border-radius: 5px;
-  background: url("/profile/00_source/icon_handle.svg") center center no-repeat;
+  background: url("00_source/icon_handle.svg") center center no-repeat;
   background-size: 80% auto;
   background-color: #FFF;
 }
@@ -347,11 +347,11 @@ html {
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:first-child {
   border-bottom: 4px solid #000;
-  background: url("/profile/00_source/icon_arrow_up.svg") center center no-repeat;
+  background: url("00_source/icon_arrow_up.svg") center center no-repeat;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:last-child {
   border-top: 4px solid #000;
-  background: url("/profile/00_source/icon_arrow_down.svg") center center no-repeat;
+  background: url("00_source/icon_arrow_down.svg") center center no-repeat;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:hover {
   background-color: #EEE;
