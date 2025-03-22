@@ -69,11 +69,25 @@ html {
   background-color: #FFF;
   position: absolute;
   border: 4px solid #000;
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   flex-direction: column;
   width: 1400px;
   height: 800px;
+}
+.desktop .desktop-background .window::after {
+  display: none;
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  width: 17px;
+  height: 18px;
+  background: url("../00_source/icon_resizehandle.svg") no-repeat center;
+  background-size: contain;
+}
+.desktop .desktop-background .window.resp::after {
+  display: block;
 }
 .desktop .desktop-background .window .window-header {
   width: 100%;
@@ -83,11 +97,11 @@ html {
   justify-content: space-between;
 }
 .desktop .desktop-background .window .window-header .header-tab {
-  width: 20%;
+  width: 200px;
   height: 100%;
   border-left: 4px solid #000;
   border-right: 4px solid #000;
-  margin-left: 80px;
+  margin-left: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,9 +142,6 @@ html {
 }
 .desktop .desktop-background .window .window-header .header-buttons .header-button.close:hover {
   background-color: #F5533D;
-}
-.desktop .desktop-background .window .window-header .header-buttons .header-button img {
-  width: 16px;
 }
 .desktop .desktop-background .window .window-body {
   width: 100%;
@@ -327,16 +338,19 @@ html {
 .desktop .desktop-background .window .window-body .window-scroll .scroll-track {
   width: 100%;
   height: calc(100% - 60px);
-  padding: 2px;
+  position: relative;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-track .scroll-thumb {
-  width: 100%;
-  height: 50%;
+  width: calc(100% - 4px);
   border: 3px solid #000;
   border-radius: 5px;
-  background: url("00_source/icon_handle.svg") center center no-repeat;
+  background: url("../00_source/icon_handle.svg") center center no-repeat;
   background-size: 80% auto;
   background-color: #FFF;
+  position: absolute;
+  top: 0;
+  left: 2px;
+  margin-top: 2px;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-track .scroll-thumb:hover {
   background-color: #EEE;
@@ -347,11 +361,11 @@ html {
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:first-child {
   border-bottom: 4px solid #000;
-  background: url("00_source/icon_arrow_up.svg") center center no-repeat;
+  background: url("../00_source/icon_arrow_up.svg") center center no-repeat;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:last-child {
   border-top: 4px solid #000;
-  background: url("00_source/icon_arrow_down.svg") center center no-repeat;
+  background: url("../00_source/icon_arrow_down.svg") center center no-repeat;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-button:hover {
   background-color: #EEE;
