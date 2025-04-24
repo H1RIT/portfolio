@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.addEventListener("click", () => {
       const windowName = icon.getAttribute("data-window");
       let existingWindow = document.querySelector(`.window[data-window="${windowName}"]`);
+      
+      if (windowName === "mfigma") {
+        window.open(
+          "https://www.figma.com/proto/LiAP4RlGNuNJ8QA0egWY6t/%E2%98%85-GKST?page-id=0%3A1&node-id=2-16&p=f&viewport=816%2C664%2C0.13&t=iVglfl7asl3iZCb0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A16&show-proto-sidebar=1",
+          "_blank"
+        );
+        return;
+      }
 
       if (existingWindow) {
         bringToFront(existingWindow);
@@ -23,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       newWindow.setAttribute("data-view", viewType);
 
       if (viewType === "mobile") {
-        newWindow.style.width = "370px";
-        newWindow.style.height = "800px";
+        newWindow.style.width = "430px";
+        newWindow.style.height = "900px";
         newWindow.querySelector(".window-scroll").style.display = "none";
         newWindow.querySelector(".window-display").style.overflow = "hidden";
         newWindow.querySelector(".window-display").style.width = "100%";
@@ -41,8 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
       if (viewType === "resp") {
         newWindow.classList.add("resp");
         enableWindowResize(newWindow);
+        newWindow.querySelector(".window-scroll").style.display = "none";
+        newWindow.querySelector(".window-display").style.width = "100%";
+        newWindow.querySelector(".window-display").style.overflow = "hidden";
       }
 
+      if (windowName === "profile") {
+        const display = newWindow.querySelector(".window-display");
+        display.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const direction = e.deltaY > 0 ? 1 : -1;
+          const next = display.scrollTop + direction * display.clientHeight;
+      
+          display.scrollTo({
+            top: next,
+            behavior: "smooth"
+          });
+        }, { passive: false });
+      }      
+      
       newWindow.classList.add("cloned");
       newWindow.setAttribute("data-window", windowName);
       newWindow.style.display = "flex";
@@ -70,6 +95,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function addMaximizeFunctionality(win) {
+    const header = win.querySelector(".window-header");
+    header.addEventListener("dblclick", () => {
+      const maximizeBtn = win.querySelector(".header-button.maximize");
+      const restoreBtn = win.querySelector(".header-button.restore");
+      if (restoreBtn.style.display === "flex") {
+        restoreBtn.click();
+      } else {
+        maximizeBtn.click();
+      }
+    });
     const maximizeBtn = win.querySelector(".header-button.maximize");
     const restoreBtn = win.querySelector(".header-button.restore");
     const viewType = win.getAttribute("data-view");
@@ -92,6 +127,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       maximizeBtn.style.display = "none";
       restoreBtn.style.display = "flex";
+
+      const header = win.querySelector(".window-header");
+      header.classList.add("no-drag");
+
+      const resizeHandles = win.querySelectorAll(".resize-handle");
+      resizeHandles.forEach(handle => handle.style.display = "none");
+
+      if (win.classList.contains("resp")) {
+        win.classList.remove("resp");
+      }
+
       syncScroll(win);
     });
 
@@ -103,22 +149,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
       restoreBtn.style.display = "none";
       maximizeBtn.style.display = "flex";
+
+      const header = win.querySelector(".window-header");
+      header.classList.remove("no-drag");
+
+      const resizeHandles = win.querySelectorAll(".resize-handle");
+      resizeHandles.forEach(handle => handle.style.display = "block");
+
+      const viewType = win.getAttribute("data-view");
+      if (viewType === "resp") {
+        win.classList.add("resp");
+      }
+
       syncScroll(win);
     });
   }
 
   function enableWindowResize(win) {
-    const directions = ["se", "sw", "ne", "nw"];
+    const directions = ["n", "s", "e", "w", "se", "sw", "ne", "nw"];
 
     directions.forEach((dir) => {
       const handle = document.createElement("div");
       handle.classList.add("resize-handle", `resize-${dir}`);
       handle.style.position = "absolute";
-      handle.style.width = "10px";
-      handle.style.height = "10px";
+      if (["n", "s"].includes(dir)) {
+        handle.style.width = "100%";
+        handle.style.height = "10px";
+      } else if (["e", "w"].includes(dir)) {
+        handle.style.width = "10px";
+        handle.style.height = "100%";
+      } else {
+        handle.style.width = "10px";
+        handle.style.height = "10px";
+      }
+      
       handle.style.zIndex = "1000";
       handle.style.background = "transparent";
-      handle.style.cursor = `${dir}-resize`;
+      handle.style.cursor = (dir === "n" || dir === "s") ? "ns-resize" :
+        (dir === "e" || dir === "w") ? "ew-resize" : `${dir}-resize`;
 
       if (dir.includes("s")) handle.style.bottom = "0";
       if (dir.includes("n")) handle.style.top = "0";
@@ -147,18 +215,30 @@ document.addEventListener("DOMContentLoaded", () => {
         let dx = e.clientX - startX;
         let dy = e.clientY - startY;
 
-        if (dir.includes("e")) win.style.width = startWidth + dx + "px";
-        if (dir.includes("s")) win.style.height = startHeight + dy + "px";
+        if (dir.includes("e")) win.style.width = Math.max(500, startWidth + dx) + "px";
+        if (dir.includes("s")) win.style.height = Math.max(300, startHeight + dy) + "px";
         if (dir.includes("w")) {
-          win.style.width = startWidth - dx + "px";
-          win.style.left = startLeft + dx + "px";
+          const rawWidth = startWidth - dx;
+          const newWidth = Math.max(500, rawWidth);
+          win.style.width = newWidth + "px";
+          if (rawWidth > 500) {
+            win.style.left = startLeft + dx + "px";
+          } else {
+            win.style.left = startLeft + (startWidth - 500) + "px";
+          }
         }
         if (dir.includes("n")) {
-          win.style.height = startHeight - dy + "px";
-          win.style.top = startTop + dy + "px";
+          const rawHeight = startHeight - dy;
+          const newHeight = Math.max(300, rawHeight);
+          win.style.height = newHeight + "px";
+          if (rawHeight > 300) {
+            win.style.top = startTop + dy + "px";
+          } else {
+            win.style.top = startTop + (startHeight - 300) + "px";
+          }
         }
 
-        syncScroll(win); // 업데이트할 때마다 스크롤도 재계산
+        syncScroll(win);
       });
 
       document.addEventListener("mouseup", () => {
@@ -182,11 +262,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (topWindow) {
-      const left = parseInt(topWindow.style.left || 100);
-      const top = parseInt(topWindow.style.top || 100);
+      const left = parseInt(topWindow.style.left);
+      const top = parseInt(topWindow.style.top);      
       return { left, top };
     } else {
-      return { left: 100, top: 100 };
+      return { left: 150, top: 60 };
     }
   }
 
@@ -207,6 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let startX, startY, startLeft, startTop;
 
     header.addEventListener("mousedown", (e) => {
+    if (header.classList.contains("no-drag")) return;
       isDragging = true;
       startX = e.clientX;
       startY = e.clientY;
@@ -288,6 +369,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       updateThumbSize();
       updateThumbPosition();
+      setTimeout(() => {
+        updateThumbSize();
+        updateThumbPosition();
+      }, 50);
     }, 0);
   }
 });

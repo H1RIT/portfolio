@@ -82,7 +82,6 @@ $border: 4px;
 
     .window {
       display: none;
-      // display: flex;
       background-color: #FFF;
       position: absolute;
       border: $border solid #000;
@@ -91,13 +90,14 @@ $border: 4px;
       flex-direction: column;
       width: 1400px;
       height: 800px;
+      // box-shadow: 5px 5px 0 #000;
 
       &::after {
         display: none;
         content: "";
         position: absolute;
         bottom: 4px;
-        left: 4px;
+        right: 4px;
         width: 17px;
         height: 18px;
         background: url("../00_source/icon_resizehandle.svg") no-repeat center;
@@ -224,7 +224,6 @@ $border: 4px;
           
                   img {
                     width: 100%;
-                    visibility: hidden;
                   }
                 }
           
@@ -429,6 +428,7 @@ $border: 4px;
                         flex-direction: column;
                         align-items: start;
                         margin-bottom: 20px;
+                        gap: 5px;
                       }
                     }
           
@@ -447,6 +447,13 @@ $border: 4px;
                   }
                 }
               }
+            }
+
+            &.game {
+              font: 2rem "bitbit";
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
           }
         }
@@ -474,6 +481,7 @@ $border: 4px;
               top: 0;
               left: 2px;
               margin-top: 2px;
+              transition: height 0.5s ease;
 
               &:hover {
                 background-color: #EEE;
@@ -505,7 +513,19 @@ $border: 4px;
 
     .window-contents {
       display: none;
+    }
 
+    .window-content {
+
+      &.rsplan {
+        display: flex;
+        flex-direction: column;
+
+        img {
+          width: 100%;
+          border-bottom: 2px solid #e4e4e4;
+        }
+      }
     }
   }
 }

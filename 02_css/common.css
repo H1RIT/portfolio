@@ -80,7 +80,7 @@ html {
   content: "";
   position: absolute;
   bottom: 4px;
-  left: 4px;
+  right: 4px;
   width: 17px;
   height: 18px;
   background: url("../00_source/icon_resizehandle.svg") no-repeat center;
@@ -186,7 +186,6 @@ html {
 }
 .desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-propic img {
   width: 100%;
-  visibility: hidden;
 }
 .desktop .desktop-background .window .window-body .window-display .window-content.profile .content-profile .profile-info {
   display: flex;
@@ -319,6 +318,7 @@ html {
   flex-direction: column;
   align-items: start;
   margin-bottom: 20px;
+  gap: 5px;
 }
 .desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat .chat-script .textbox {
   grid-column: 1/2;
@@ -328,6 +328,12 @@ html {
 }
 .desktop .desktop-background .window .window-body .window-display .window-content.profile .content-history .history-chat.right .chat-name {
   margin-left: auto;
+}
+.desktop .desktop-background .window .window-body .window-display .window-content.game {
+  font: 2rem "bitbit";
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .desktop .desktop-background .window .window-body .window-scroll {
   width: 30px;
@@ -351,6 +357,7 @@ html {
   top: 0;
   left: 2px;
   margin-top: 2px;
+  transition: height 0.5s ease;
 }
 .desktop .desktop-background .window .window-body .window-scroll .scroll-track .scroll-thumb:hover {
   background-color: #EEE;
@@ -372,4 +379,12 @@ html {
 }
 .desktop .desktop-background .window-contents {
   display: none;
+}
+.desktop .desktop-background .window-content.rsplan {
+  display: flex;
+  flex-direction: column;
+}
+.desktop .desktop-background .window-content.rsplan img {
+  width: 100%;
+  border-bottom: 2px solid #e4e4e4;
 }/*# sourceMappingURL=common.css.map */
